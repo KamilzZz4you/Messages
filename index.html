@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Eternal Muse - Digital Love Letter</title>
+    <title>Tugas coding With Gemini </title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -182,7 +182,7 @@
                 </div>
                 <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Hi vell!</h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
-                    Thank you udah mau click link yang aku kasih yaaa, there's some note i left behind for you
+                    Thank you udah mau click link yang aku kasih yaaa, there's some note i left behind for you. dont forget click the play button
                 </p>
                 <button class="group mt-8 px-10 py-4 rounded-full bg-gradient-to-r from-secondary to-[#C2185B] text-white font-label-md text-label-md uppercase tracking-widest shadow-lg hover:shadow-secondary/30 transition-all duration-300 active:scale-95 flex items-center gap-2" id="btn-open">
                     Buka Pesan
@@ -308,7 +308,7 @@ function createHeartParticles(e) {
     const clickY = rect.top - containerRect.top + (rect.height / 2);
 
     // Cukup buat 6 partikel kecil
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 10; i++) {
         const heart = document.createElement('span');
         heart.className = 'material-symbols-outlined heart-particle';
         heart.textContent = 'favorite';
@@ -322,7 +322,7 @@ function createHeartParticles(e) {
         heart.style.top = clickY + 'px';
         
         // Berikan sedikit variasi arah sebaran (X) dan kecepatan (delay) ke atas lewat CSS inline
-        const randomX = (Math.random() - 0.5) * 80; // menyebar ke kiri/kanan maksimal 40px
+        const randomX = (Math.random() - 0.5) * 120; // menyebar ke kiri/kanan maksimal 200px
         heart.style.setProperty('--x-move', `${randomX}px`);
         heart.style.transform = `translate(-50%, -50%)`;
         
@@ -340,7 +340,7 @@ function createHeartParticles(e) {
         });
 
         // Hapus elemen setelah animasi selesai
-        setTimeout(() => heart.remove(), 2000);
+        setTimeout(() => heart.remove(), 10000);
     }
 }
         // Background Animation Enhancement
