@@ -297,24 +297,52 @@
             isMusicPlaying = !isMusicPlaying;
         });
 
-        // Heart Particles Function
-        function createHeartParticles() {
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('span');
-                    heart.className = 'material-symbols-outlined heart-particle';
-                    heart.textContent = 'favorite';
-                    heart.style.left = (Math.random() * 100) + '%';
-                    heart.style.top = (Math.random() * 100) + '%';
-                    heart.style.fontSize = (12 + Math.random() * 24) + 'px';
-                    heart.style.fontVariationSettings = "'FILL' 1";
-                    container.appendChild(heart);
+        // Heart Particles Function (Versi Elegan & Minimalis)
+function createHeartParticles(e) {
+    // Mengambil posisi koordinat tombol yang di-klik
+    const rect = btnOpen.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    
+    // Titik tengah tombol relatif terhadap kontainer
+    const clickX = rect.left - containerRect.left + (rect.width / 2);
+    const clickY = rect.top - containerRect.top + (rect.height / 2);
 
-                    setTimeout(() => heart.remove(), 3000);
-                }, i * 100);
-            }
-        }
+    // Cukup buat 6 partikel kecil
+    for (let i = 0; i < 6; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'material-symbols-outlined heart-particle';
+        heart.textContent = 'favorite';
+        
+        // Atur font-size lebih kecil (14px - 22px) agar tidak mencolok
+        heart.style.fontSize = (14 + Math.random() * 8) + 'px';
+        heart.style.fontVariationSettings = "'FILL' 1";
+        
+        // Posisi awal persis di tombol
+        heart.style.left = clickX + 'px';
+        heart.style.top = clickY + 'px';
+        
+        // Berikan sedikit variasi arah sebaran (X) dan kecepatan (delay) ke atas lewat CSS inline
+        const randomX = (Math.random() - 0.5) * 80; // menyebar ke kiri/kanan maksimal 40px
+        heart.style.setProperty('--x-move', `${randomX}px`);
+        heart.style.transform = `translate(-50%, -50%)`;
+        
+        // Modifikasi transisi langsung di element agar lebih smooth
+        heart.style.transition = 'all 2s cubic-bezier(0.25, 1, 0.5, 1)';
 
+        container.appendChild(heart);
+
+        // Memicu animasi gerak naik ke atas dengan aman menggunakan requestAnimationFrame
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                heart.style.transform = `translate(calc(-50% + ${randomX}px), -120px) scale(0.8)`;
+                heart.style.opacity = '0';
+            }, 50);
+        });
+
+        // Hapus elemen setelah animasi selesai
+        setTimeout(() => heart.remove(), 2000);
+    }
+}
         // Background Animation Enhancement
         document.addEventListener('mousemove', (e) => {
             const x = e.clientX / window.innerWidth;
